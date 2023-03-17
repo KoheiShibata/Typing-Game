@@ -1,27 +1,45 @@
-let question = ["Songoku", "Chi-Chi", "Nappa", "Vegeta", "Raditz", "Broly", "Freeza", "Zarbon", "Dodoria", "Ginyu-Forces", "Kurilllin", "Piccolo", "Yamcha", "Trunks"];
-let typingText = document.getElementById("typingText")
-questionWord()
+const question = ["Songoku", "Chi-Chi", "Nappa", "Vegeta", "Raditz", "Broly", "Freeza", "Zarbon", "Dodoria", "Ginyu-Forces", "Kurilllin", "Piccolo", "Yamcha", "Trunks"];
+let checkText = [];
+createText()
 
-const miss = document.getElementById("missCount")
-let missCount = 0;
+const fail = document.getElementById("failCount")
+const success = document.getElementById("successCount")
+let failCount = 0;
+let successCount = 0;
 
-function questionWord() {
+
+function createText() {
+    const textWrap = document.getElementById("typeText")
     let random = Math.floor(Math.random() * question.length)
-    typingText.innerText = question[random]
+    const textContent = question[random].split("")
+    textWrap.textContent = "";
+    checkText = textContent.map(value => {
+        const span = document.createElement("span")
+        span.textContent = value
+        textWrap.appendChild(span)
+        return span
+    })
 }
 
 window.addEventListener("keydown", function (e) {
     let typekey = e.key;
 
-    if (typekey == typingText.innerText.slice(0, 1)) {
-        typingText.innerText = typingText.innerText.slice(1)
+    if (typekey == checkText[0].textContent) {
+        checkText[0].className = "success-color"
+        checkText.shift()
     } else {
-        missCount++
-        miss.innerText = missCount
+        failCount++;
+        fail.innerText = failCount
     }
 
-    if (typingText.innerText.length == 0) {
-        questionWord()
+    if (typekey == "Shift") {
+        failCount--;
+    }
+
+    if (!checkText.length) {
+        successCount++;
+        success.innerText = successCount
+        createText()
     }
 
 });

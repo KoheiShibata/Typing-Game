@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typing Game Dragonball</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Typing Game</title>
 </head>
+
 <body>
-    <p class="typingText" id="typingText"></p>
-    <p class="typingMiss" id="missCount"></p>
-    
+    <main>
+        <div class="main__wrap">
+                <p id="typeText" class="text__wrap"></p>
+            <div class="count__wrap">
+                    <p id="successCount">0</p>
+                    <p id="failCount">0</p>
+            </div>
+        </div>
+    </main>
+
     <script src="typing.js"></script>
 </body>
+
 </html>

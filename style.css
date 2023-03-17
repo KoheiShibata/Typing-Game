@@ -1,0 +1,34 @@
+body {
+    height: 100vh;
+    padding: 40px 0;
+    background-color: #030202;
+    color: #fff;
+}
+
+main {
+    width: 600px;
+    height: 100%;
+    margin: auto;
+    position: relative;
+}
+
+.main__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.text__wrap {
+    font-size: 40px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.count__wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.success-color {
+    color: #30CB2A;
+}

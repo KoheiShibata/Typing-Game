@@ -5,11 +5,18 @@ body {
     color: #fff;
 }
 
+.start__btn {
+    padding: 10px 40px;
+    background-color: #30CB2A;
+    border-radius: 8px;
+}
+
 main {
     width: 600px;
     height: 100%;
     margin: auto;
     position: relative;
+    display: none;
 }
 
 .main__wrap {
@@ -31,4 +38,8 @@ main {
 
 .success-color {
     color: #30CB2A;
+}
+
+.fail-color {
+    background-color: red;
 }

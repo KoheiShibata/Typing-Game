@@ -1,12 +1,13 @@
 let failCount = 0;
 let successCount = 0;
 let startTime = 3;
-let timeLimit = 60;
+let timeLimit = 30;
 const main = document.getElementById("main")
 const textWrap = document.getElementById("typeText")
 const startButton = document.getElementById("startButton")
 const fail = document.getElementById("failCount")
 const success = document.getElementById("successCount")
+const remainingTime = document.getElementById("timeLimit")
 
 const question = ["Songoku", "Chi-Chi", "Nappa", "Vegeta", "Raditz", "Broly", "Freeza", "Zarbon", "Dodoria", "Ginyu-Forces", "Kurilllin", "Piccolo", "Yamcha", "Trunks"];
 let checkText = [];
@@ -15,11 +16,6 @@ let checkText = [];
 function countDown() {
     startButton.textContent = startTime
     startTime--;
-}
-
-function typeTimer() {
-    console.log(timeLimit)
-    timeLimit--;
 }
 
 
@@ -44,9 +40,25 @@ startButton.addEventListener("click", () => {
             clearInterval(timer)
             createText()
             main.style.display = "block"
+            typeTimer()
         }
     }, 1000)
 })
+
+// 制限時間
+function typeTimer() {
+    const countDown = () => {
+        remainingTime.textContent = timeLimit
+        timeLimit--;
+    }
+    const typeTimer = setInterval(() => {
+        countDown()
+        if (timeLimit < 0) {
+            clearInterval(typeTimer)
+        }
+    }, 1000) 
+}
+
 
 // タイピング処理
 window.addEventListener("keydown", function (e) {

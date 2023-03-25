@@ -5,10 +5,29 @@ body {
     color: #fff;
 }
 
-.start__btn {
+.start__wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.start__wrap img {
+    width: 600px;
+}
+
+.start__wrap h1 {
+    font-size: 20px;
+    margin-top: 16px;
+    text-align: center;
+}
+
+.start__wrap button {
+    display: block;
     padding: 10px 40px;
     background-color: #30CB2A;
     border-radius: 8px;
+    margin: 16px auto 0;
 }
 
 main {

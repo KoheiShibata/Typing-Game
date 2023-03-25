@@ -11,14 +11,18 @@
 </head>
 
 <body>
-    <button id="startButton" class="start__btn">Ready</button>
+    <div class="start__wrap" id="startWrap">
+        <img src="./img/logo.jpg" alt="">
+        <h1>Type Quest SQL</h1>
+        <button id="startButton" class="start__btn">Ready</button>
+    </div>
     <main id="main">
         <div class="main__wrap">
-                <span id="timeLimit"></span>
-                <p id="typeText" class="text__wrap"></p>
+            <span id="timeLimit"></span>
+            <p id="typeText" class="text__wrap"></p>
             <div class="count__wrap">
-                    <p id="successCount">0</p>
-                    <p id="failCount">0</p>
+                <p id="successCount"></p>
+                <p id="failCount"></p>
             </div>
         </div>
     </main>

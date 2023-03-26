@@ -13,7 +13,7 @@
 <body>
     <div class="start__wrap" id="startWrap">
         <img src="./img/logo.jpg" alt="">
-        <h1>Type Quest SQL</h1>
+        <h1 id="title">Type Quest SQL</h1>
         <button id="startButton" class="start__btn">Ready</button>
     </div>
     <main id="main">
@@ -27,6 +27,18 @@
         </div>
     </main>
 
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mntn-dev/t.js/t.min.js"></script>
+    <script>
+        $(function () {
+            $('#title').t({
+                speed: 100,
+                caret: false,
+                blink: false,
+            });
+        });
+    </script>
     <script src="typing.js"></script>
 </body>
 

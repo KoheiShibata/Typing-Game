@@ -3,6 +3,7 @@ body {
     padding: 40px 0;
     background-color: #030202;
     color: #fff;
+    font-family: "Courier New", monospace;
 }
 
 .start__wrap {
@@ -17,17 +18,23 @@ body {
 }
 
 .start__wrap h1 {
-    font-size: 20px;
+    font-size: 32px;
     margin-top: 16px;
     text-align: center;
 }
 
 .start__wrap button {
     display: block;
-    padding: 10px 40px;
-    background-color: #30CB2A;
+    padding: 10px 60px;
+    background-color: #568CA1;
     border-radius: 8px;
     margin: 16px auto 0;
+    transition: 0.6s;
+}
+
+.start__wrap button:hover {
+    opacity: 0.6;
+    transition: 0.6s;
 }
 
 main {

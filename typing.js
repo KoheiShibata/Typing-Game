@@ -1,6 +1,7 @@
 const main = document.getElementById("main")
+const getMainStyle = getComputedStyle(main)
 const textWrap = document.getElementById("typeText")
-const startButton = document.getElementById("startButton")
+const startText = document.getElementById("startText")
 const fail = document.getElementById("failCount")
 const success = document.getElementById("successCount")
 const remainingTime = document.getElementById("timeLimit")
@@ -10,6 +11,7 @@ let startTime = 3;
 let timeLimit = 10;
 let successCount = 0;
 let failCount = 0;
+let timerStarted = false;
 
 const question = ["Songoku", "Chi-Chi", "Nappa", "Vegeta", "Raditz", "Broly", "Freeza", "Zarbon", "Dodoria", "Ginyu-Forces", "Kurilllin", "Piccolo", "Yamcha", "Trunks"];
 let checkText = [];
@@ -28,20 +30,22 @@ function createText() {
 }
 
 // スタートタイマー
-startButton.addEventListener("click", () => {
+function startTimer() {
     const countDown = () => {
-        startButton.textContent = startTime
+        startText.textContent = startTime
         startTime--;
     }
-    const timer = setInterval(()=> {
+    const timer = setInterval(() => {
         countDown()
-        if(startTime < 0) {
+        if (startTime < 0) {
             clearInterval(timer)
             typeDisplay()
             startWrap.style.display = "none"
+            timerStarted = false;
         }
     }, 1000)
-})
+}
+
 
 // タイピングゲーム表示
 function typeDisplay() {
@@ -61,41 +65,49 @@ function typeDisplay() {
 // タイプタイマー
 function typeTimer() {
     let startTime = performance.now();
-    
+
     const animate = (now) => {
         let elapsed = Math.floor((now - startTime) / 1000);
-      remainingTime.textContent = timeLimit - elapsed;
-      
-      if (elapsed < timeLimit) {
-        requestAnimationFrame(animate);
-      } else {
-        main.style.display = "none";
-        startButton.textContent = "Restart";
-        startWrap.style.display = "block";
-      }
+        remainingTime.textContent = timeLimit - elapsed;
+
+        if (elapsed < timeLimit) {
+            requestAnimationFrame(animate);
+        } else {
+            main.style.display = "none";
+            startText.textContent = "Enterでスタート";
+            startWrap.style.display = "block";
+        }
     };
     requestAnimationFrame(animate);
-  }
+}
 
 // タイピング処理
 window.addEventListener("keydown", function (e) {
     let typekey = e.key;
-    textWrap.classList.remove("fail-color")
+    // Enterでゲームスタート
+    if (getMainStyle.display === "none" && typekey === "Enter" && !timerStarted) {
+        timerStarted = true;
+        startTimer();
+    }
 
-    if (typekey === "Shift") {
-        return;
-    }
-    if (typekey === checkText[0].textContent) {
-        checkText[0].className = "success-color"
-        checkText.shift()
-    } else {
-        textWrap.classList.add("fail-color")
-        failCount++;
-        fail.innerText = failCount
-    }
-    if (!checkText.length) {
-        successCount++;
-        success.innerText = successCount
-        createText()
+    // ゲーム処理
+    if (getMainStyle.display === "block") {
+        textWrap.classList.remove("fail-color")
+        if (typekey === "Shift" || typekey === "Enter") {
+            return;
+        }
+        if (typekey === checkText[0].textContent) {
+            checkText[0].className = "success-color"
+            checkText.shift()
+        } else {
+            textWrap.classList.add("fail-color")
+            failCount++;
+            fail.innerText = failCount
+        }
+        if (!checkText.length) {
+            successCount++;
+            success.innerText = successCount
+            createText()
+        }
     }
 });

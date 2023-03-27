@@ -2,18 +2,24 @@ const main = document.getElementById("main")
 const getMainStyle = getComputedStyle(main)
 const textWrap = document.getElementById("typeText")
 const startText = document.getElementById("startText")
+const restartText = document.getElementById("restartText")
 const fail = document.getElementById("failCount")
 const success = document.getElementById("successCount")
+const resultType = document.getElementById("successType")
+const resultSuccess = document.getElementById("successResult")
+const resultFail = document.getElementById("failResult")
 const remainingTime = document.getElementById("timeLimit")
 const startWrap = document.getElementById("startWrap")
+const endWrap = document.getElementById("endWrap")
 
 let startTime = 3;
-let timeLimit = 10;
+let timeLimit = 30;
+let typeCount = 0;
 let successCount = 0;
 let failCount = 0;
 let timerStarted = false;
 
-const question = ["Songoku", "Chi-Chi", "Nappa", "Vegeta", "Raditz", "Broly", "Freeza", "Zarbon", "Dodoria", "Ginyu-Forces", "Kurilllin", "Piccolo", "Yamcha", "Trunks"];
+const question = ["show databases;", "create database;", "use database_name;","drop database", "show tables;", "create table", "select distinct", "where", "group by", "having", "order by", "between", "LIKE", "JOIN", "VIEW"]
 let checkText = [];
 
 // 問題を作成
@@ -27,12 +33,14 @@ function createText() {
         textWrap.appendChild(span)
         return span
     })
+    checkText[0].className = "letterType"
 }
 
 // スタートタイマー
 function startTimer() {
     const countDown = () => {
         startText.textContent = startTime
+        restartText.textContent = startTime
         startTime--;
     }
     const timer = setInterval(() => {
@@ -41,6 +49,7 @@ function startTimer() {
             clearInterval(timer)
             typeDisplay()
             startWrap.style.display = "none"
+            endWrap.classList.remove("active")
             timerStarted = false;
         }
     }, 1000)
@@ -50,7 +59,8 @@ function startTimer() {
 // タイピングゲーム表示
 function typeDisplay() {
     startTime = 3;
-    timeLimit = 10;
+    timeLimit = 30;
+    typeCount = 0;
     failCount = 0;
     successCount = 0;
     textWrap.classList.remove("fail-color")
@@ -72,10 +82,14 @@ function typeTimer() {
 
         if (elapsed < timeLimit) {
             requestAnimationFrame(animate);
-        } else {
+        } 
+        else {
             main.style.display = "none";
-            startText.textContent = "Enterでスタート";
-            startWrap.style.display = "block";
+            restartText.textContent = "Enterキーでもう一度";
+            resultType.textContent = typeCount;
+            resultSuccess.textContent = successCount;
+            resultFail.textContent = failCount;
+            endWrap.classList.add("active")
         }
     };
     requestAnimationFrame(animate);
@@ -97,8 +111,12 @@ window.addEventListener("keydown", function (e) {
             return;
         }
         if (typekey === checkText[0].textContent) {
+            typeCount++;
             checkText[0].className = "success-color"
             checkText.shift()
+            if (checkText.length) {
+                checkText[0].className = "letterType"
+            }
         } else {
             textWrap.classList.add("fail-color")
             failCount++;

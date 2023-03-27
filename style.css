@@ -3,6 +3,30 @@ body {
     padding: 40px 0;
     background-color: #030202;
     color: #fff;
+    font-family: "Courier New", monospace;
+}
+
+.start__wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.start__wrap img {
+    width: 600px;
+}
+
+.start__wrap h1 {
+    font-size: 32px;
+    margin-top: 16px;
+}
+
+.start__wrap p {
+    font-size: 18px;
+    margin-top: 16px;
+    color: #B5CE89;
 }
 
 main {
@@ -10,6 +34,7 @@ main {
     height: 100%;
     margin: auto;
     position: relative;
+    display: none;
 }
 
 .main__wrap {
@@ -31,4 +56,8 @@ main {
 
 .success-color {
     color: #30CB2A;
+}
+
+.fail-color {
+    background-color: red;
 }

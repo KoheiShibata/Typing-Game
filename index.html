@@ -11,16 +11,34 @@
 </head>
 
 <body>
-    <main>
+    <div class="start__wrap" id="startWrap">
+        <img src="./img/logo.jpg" alt="">
+        <h1 id="title">Typing SQL</h1>
+        <p id="startText">Enterキーでスタート</p>
+    </div>
+    <main id="main">
         <div class="main__wrap">
-                <p id="typeText" class="text__wrap"></p>
+            <span id="timeLimit"></span>
+            <p id="typeText" class="text__wrap"></p>
             <div class="count__wrap">
-                    <p id="successCount">0</p>
-                    <p id="failCount">0</p>
+                <p id="successCount"></p>
+                <p id="failCount"></p>
             </div>
         </div>
     </main>
 
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mntn-dev/t.js/t.min.js"></script>
+    <script>
+        $(function () {
+            $('#title').t({
+                speed: 100,
+                caret: false,
+                blink: false,
+            });
+        });
+    </script>
     <script src="typing.js"></script>
 </body>
 

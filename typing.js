@@ -12,6 +12,20 @@ const remainingTime = document.getElementById("timeLimit")
 const startWrap = document.getElementById("startWrap")
 const endWrap = document.getElementById("endWrap")
 
+// 音源
+const bgmSound = new Audio("music/BPM130.mp3")
+const startSound = new Audio("music/Countdown06-2.mp3")
+const endSound = new Audio("music/end.mp3")
+const typeSound = new Audio("music/typing.mp3")
+const successSound = new Audio("music/correct040.mp3")
+const failSound = new Audio("music/fail.mp3")
+
+// 音源調整
+bgmSound.volume = 0.4;
+failSound.volume = 0.4;
+bgmSound.currentTime = 1
+
+
 let startTime = 3;
 let timeLimit = 30;
 let typeCount = 0;
@@ -44,7 +58,8 @@ function startTimer() {
         startTime--;
     }
     const timer = setInterval(() => {
-        countDown()
+        countDown();
+        startSound.play()
         if (startTime < 0) {
             clearInterval(timer)
             typeDisplay()
@@ -82,8 +97,12 @@ function typeTimer() {
 
         if (elapsed < timeLimit) {
             requestAnimationFrame(animate);
+            bgmSound.play()
         } 
         else {
+            bgmSound.pause()
+            bgmSound.currentTime = 1
+            endSound.play()
             main.style.display = "none";
             restartText.textContent = "Enterキーでもう一度";
             resultType.textContent = typeCount;
@@ -112,20 +131,27 @@ window.addEventListener("keydown", function (e) {
         }
         if (typekey === checkText[0].textContent) {
             typeCount++;
+            typeSound.currentTime = 0;
+            typeSound.play()
             checkText[0].className = "success-color"
             checkText.shift()
             if (checkText.length) {
                 checkText[0].className = "letterType"
             }
         } else {
+            failSound.currentTime = 0;
+            failSound.play()
             textWrap.classList.add("fail-color")
             failCount++;
             fail.innerText = failCount
         }
         if (!checkText.length) {
+            successSound.currentTime = 0;
+            successSound.play()
             successCount++;
             success.innerText = successCount
             createText()
+
         }
     }
 });

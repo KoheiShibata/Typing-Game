@@ -7,10 +7,13 @@ https://typing.kohei-techis.com/
 
 ## Features
 - Enterキーを押してゲームスタート
-- 30秒間
+- ゲームは30秒間です。
 - ゲーム中にsuccess、missをカウントします。
 - ゲーム終了後、正しく打ったキーの数、成功数、ミスタイプを表示します。
 
 
 ## How to install & Start-up
-$ git clone 
+$ git clone https://github.com/KoheiShibata/Typing-Game.git
+
+## Author
+koheiShibata

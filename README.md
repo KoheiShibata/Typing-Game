@@ -13,7 +13,9 @@ https://typing.kohei-techis.com/
 
 
 ## How to install & Start-up
+```
 $ git clone https://github.com/KoheiShibata/Typing-Game.git
+```
 
 ## Author
 koheiShibata

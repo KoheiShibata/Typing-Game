@@ -33,7 +33,7 @@ let successCount = 0;
 let failCount = 0;
 let timerStarted = false;
 
-const question = ["show databases;", "create database;", "use database_name;","drop database", "show tables;", "create table", "select distinct", "where", "group by", "having", "order by", "between", "ls ls-l ls-a", "cd cp mkdir","touch", "rm rmdir", "cat more less", "find grep", "diff", "chmod chown"]
+const question = ["show databases;", "create database;", "use database_name;","drop database", "show tables;", "create table", "select distinct", "group by", "having", "order by", "between", "ls", "ls-l", "ls-a", "cd cp", "mkdir", "touch", "rm rmdir", "cat", "less", "more", "find", "grep", "diff", "chmod", "chown"]
 let checkText = [];
 
 // 問題を作成

@@ -1,4 +1,4 @@
-# Typing-Game
+# Typing-Game 〜Novice Command Master〜
 https://typing.kohei-techis.com/
 
 ## Description

@@ -13,19 +13,46 @@
 <body>
     <div class="start__wrap" id="startWrap">
         <img src="./img/logo.jpg" alt="">
-        <h1 id="title">Typing SQL</h1>
-        <p id="startText">Enterキーでスタート</p>
+        <h1 id="title">Novice Command Master</h1>
+        <p class="startText" id="startText">Enterキーでスタート</p>
     </div>
+
     <main id="main">
+        <img src="./img/logo3.jpg" alt="">
         <div class="main__wrap">
-            <span id="timeLimit"></span>
+            <time id="timeLimit"></time>
             <p id="typeText" class="text__wrap"></p>
             <div class="count__wrap">
-                <p id="successCount"></p>
-                <p id="failCount"></p>
+                <div class="success">
+                    <p>success</p>
+                    <span id="successCount"></span>
+                </div>
+                <div class="fail">
+                    <p>miss</p>
+                    <span id="failCount"></span>
+                </div>
             </div>
         </div>
     </main>
+
+    <div class="end__wrap" id="endWrap">
+        <ul class="result__list">
+            <li class="result__item">
+                <p>正しく打ったキーの数</p>
+                <span id="successType">34</span>
+            </li>
+            <li class="result__item">
+                <p>成功数</p>
+                <span id="successResult"></span>
+            </li>
+            <li class="result__item">
+                <p>ミスタイプ数</p>
+                <span id="failResult"></span>
+            </li>
+        </ul>
+        <p class="startText" id="restartText"></p>
+    </div>
+
 
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
